@@ -6,3 +6,9 @@ spring:
   data:
     solr:
       host: http://localhost:8983/solr/yida
+  datasource:
+    url: jdbc:mysql://handsomeyida.xyz:3306/law?serverTimezone=UTC
+    username: law
+    password: 666555
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
