@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xmu.yida.solrlearn.mapper.FactMapper">
+    <select id="getFactPOById" parameterType="Integer" resultType="FactPO">
+        select id,fact,relevant_ids,punish_of_money,criminals,death_penalty,imprisonment,life_imprisonment
+        from fact_ where id=#{id}
+    </select>
+
+    <delete id="deleteFactPOById" parameterType="Integer">
+        delete from fact_ where id=#{id}
+    </delete>
+
+    <insert id="addFactPO" parameterType="FactPO" keyColumn="id" useGeneratedKeys="true">
+       insert into fact_(
+            fact,
+            relevant_ids,
+            punish_of_money,
+            criminals,
+            death_penalty,
+            imprisonment,
+            life_imprisonment
+        )values (
+        #{fact},
+        #{relevantIds},
+        #{punishOfMoney},
+        #{criminals},
+        #{deathPenalty},
+        #{imprisonment},
+        #{lifeImprisonment}
+        )
+    </insert>
+
+    <update id="updateFactPO" parameterType="FactPO">
+        update fact_
+        <set>
+            <if test="fact!=null">fact=#{fact},</if>
+            <if test="relevantIds!=null">relevant_ids=#{relevantIds},</if>
+            <if test="punishOfMoney!=null">punish_of_money=#{punishOfMoney},</if>
+            <if test="criminals!=null">criminals=#{criminals},</if>
+            <if test="deathPenalty!=null">death_penalty=#{deathPenalty},</if>
+            <if test="imprisonment!=null">imprisonment=#{imprisonment},</if>
+            <if test="lifeImprisonment!=null">life_imprisonment=#{lifeImprisonment}</if>
+        </set>
+    </update>
+</mapper>
