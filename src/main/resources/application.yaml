@@ -9,3 +9,8 @@ spring:
   profiles:
     active: dev
 
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: xmu.yida.solrlearn.domain.po
+  configuration:
+    map-underscore-to-camel-case: true
