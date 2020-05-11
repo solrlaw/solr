@@ -7,7 +7,7 @@ spring:
     solr:
       host: http://localhost:8983/solr/yida
   profiles:
-    active: dev
+    active: limao
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
