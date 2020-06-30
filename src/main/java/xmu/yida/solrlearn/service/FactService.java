@@ -1,12 +1,10 @@
 package xmu.yida.solrlearn.service;
 
-import org.apache.solr.client.solrj.SolrServerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xmu.yida.solrlearn.dao.FactDao;
 import xmu.yida.solrlearn.domain.fact.Fact;
 
-import java.io.IOException;
 
 @Service
 public class FactService {

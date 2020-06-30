@@ -3,15 +3,15 @@
 <mapper namespace="xmu.yida.solrlearn.mapper.FactMapper">
     <select id="getFactPOById" parameterType="Integer" resultType="FactPO">
         select id,fact,relevant_ids,punish_of_money,criminals,death_penalty,imprisonment,life_imprisonment
-        from fact_ where id=#{id}
+        from fact where id=#{id}
     </select>
 
     <delete id="deleteFactPOById" parameterType="Integer">
-        delete from fact_ where id=#{id}
+        delete from fact where id=#{id}
     </delete>
 
     <insert id="addFactPO" parameterType="FactPO" keyColumn="id" useGeneratedKeys="true">
-       insert into fact_(
+       insert into fact(
             fact,
             relevant_ids,
             punish_of_money,
@@ -31,7 +31,7 @@
     </insert>
 
     <update id="updateFactPO" parameterType="FactPO">
-        update fact_
+        update fact
         <set>
             <if test="fact!=null">fact=#{fact},</if>
             <if test="relevantIds!=null">relevant_ids=#{relevantIds},</if>
@@ -42,4 +42,18 @@
             <if test="lifeImprisonment!=null">life_imprisonment=#{lifeImprisonment}</if>
         </set>
     </update>
+
+
+    <select id="getAllFacts" resultType="FactPO">
+        select
+            id,
+            fact,
+            relevant_ids,
+            punish_of_money,
+            criminals,
+            death_penalty,
+            imprisonment,
+            life_imprisonment
+        from fact  where is_deleted = 0 limit 0,3000
+    </select>
 </mapper>

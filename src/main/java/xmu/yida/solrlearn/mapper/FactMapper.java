@@ -4,15 +4,19 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 import xmu.yida.solrlearn.domain.po.FactPO;
 
+import java.util.List;
+
 @Component
 @Mapper
 public interface FactMapper {
 
-    public FactPO getFactPOById(Integer id);
+    FactPO getFactPOById(Integer id);
 
-    public boolean deleteFactPOById(Integer id);
+    boolean deleteFactPOById(Integer id);
 
-    public FactPO addFactPO(FactPO factPO);
+    FactPO addFactPO(FactPO factPO);
 
-    public FactPO updateFactPO(FactPO factPO);
+    FactPO updateFactPO(FactPO factPO);
+
+    List<FactPO> getAllFacts();
 }

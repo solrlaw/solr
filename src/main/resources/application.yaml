@@ -1,16 +1,39 @@
 server:
-  port: 8080
+  port: 8001
 
 
 spring:
   data:
     solr:
-      host: http://localhost:8983/solr/yida
+      host: http://localhost:8983/solr/law_fact
   profiles:
     active: limao
+  application:
+    name: search-service
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: xmu.yida.solrlearn.domain.po
   configuration:
     map-underscore-to-camel-case: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: search-service8001
+    prefer-ip-address: true
+
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+
+logging:
+  level:
+    # feign日志以什么级别监控接口
+    xmu.yida.solrlearn.service.feign.GraphServiceClient: debug
+
+
+feign:
+  hystrix:
+    enabled: true

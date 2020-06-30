@@ -11,6 +11,8 @@ import xmu.yida.solrlearn.domain.fact.Fact;
 import xmu.yida.solrlearn.domain.po.FactPO;
 import xmu.yida.solrlearn.mapper.FactMapper;
 
+import java.util.List;
+
 @Repository
 public class FactDao {
 
@@ -23,10 +25,10 @@ public class FactDao {
     public SolrDocumentList getFact(String content) {
         try{
             SolrQuery solrQuery=new SolrQuery();
+            System.out.println("查询关键词为："+content);
         solrQuery.setQuery("fact:"+content);
         solrQuery.setRows(50);
         solrQuery.setStart(0);
-        solrQuery.set("fl","fact,id");
         QueryResponse response =solrClient.query(solrQuery);
         SolrDocumentList documentList=response.getResults();
         return documentList;
@@ -76,5 +78,11 @@ public class FactDao {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public List<FactPO> getAllFacts(){
+        List<FactPO> facts=factMapper.getAllFacts();
+
+        return facts;
     }
 }
