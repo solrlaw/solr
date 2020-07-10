@@ -3,11 +3,11 @@ package xmu.yida.solrlearn.controller;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import xmu.yida.solrlearn.domain.fact.Fact;
 import xmu.yida.solrlearn.service.SearchService;
+import xmu.yida.solrlearn.util.ResponseUtil;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -30,7 +30,7 @@ public class SearchController {
     }
 
 
-    public String querySimilarityFallbackMethod(){
-        return "语义查询超时！查询失败";
+    public Object querySimilarityFallbackMethod(){
+        return ResponseUtil.customization(-1, "语义查询超时！查询失败" ) ;
     }
 }
