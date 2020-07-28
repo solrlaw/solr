@@ -30,7 +30,7 @@ public class SearchController {
     }
 
 
-    public Object querySimilarityFallbackMethod(){
-        return ResponseUtil.customization(-1, "语义查询超时！查询失败" ) ;
+    public Object querySimilarityFallbackMethod(String content){
+        return ResponseUtil.customization(-1, "查询"+content+"时，语义查询超时！查询失败" ) ;
     }
 }
